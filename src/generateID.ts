@@ -50,4 +50,22 @@ export class GenerateID {
     }
     return null;
   };
+
+  public setId = (key) => {
+    const { currId, child } = this.idList[key];
+    const parentSlotId = this.nextAvailableId(this.idList[key]);
+
+    if (parentSlotId !== null) {
+      if (child && currId === child.min && child.currId < child.max) {
+        const childSlotId = this.nextAvailableId(child, false);
+        if (childSlotId !== null) {
+          return key + parentSlotId + '_' + childSlotId;
+        }
+      } else {
+        return key + parentSlotId;
+      }
+    }
+
+    return null;
+  };
 }
