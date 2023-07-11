@@ -1,5 +1,5 @@
 export class GenerateID {
-  protected idList = {
+  public idList = {
     dsk_lb: {
       min: 1,
       max: 5,
